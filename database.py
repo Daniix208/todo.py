@@ -7,7 +7,7 @@ def init_db():
         """
 	CREATE TABLE IF NOT EXISTS tasks (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		user_id INTEGER NOT NULL,
+		user_id TEXT NOT NULL,
 		task_text TEXT NOT NULL,
 		status BOOLEAN DEFAULT 0
         )

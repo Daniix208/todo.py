@@ -7,7 +7,7 @@ class TaskModel:
         connection = get_connection()
         cursor = connection.execute(
             f"""
-						INSERT INTO tasks (user_id, task_text) VALUES ({user_id}, {task_text})			
+						INSERT INTO tasks (user_id, task_text) VALUES ('{user_id}', '{task_text}')			
 					"""
         )
         connection.commit()
@@ -15,21 +15,23 @@ class TaskModel:
 
     @staticmethod
     def get_tasks(user_id):
+        print(user_id)
         connection = get_connection()
         cursor = connection.execute(
             f"""
-						SELECT id, task_text, status FROM tasks WHERE user_id = {user_id}			
+						SELECT id, task_text, status FROM tasks WHERE user_id = "{user_id}"			
 						"""
         )
-        connection.commit()
+        tasks = cursor.fetchall()
         connection.close()
+        return tasks
 
     @staticmethod
-    def delete_task(task_id):
+    def delete_task(user_id, task_text):
         connection = get_connection()
         cursor = connection.execute(
             f"""
-					DELETE FROM tasks WHERE id = {task_id}			
+					DELETE FROM tasks WHERE user_id = '{user_id}' AND task_text = '{task_text}'			
 					"""
         )
         connection.commit()
