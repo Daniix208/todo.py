@@ -46,3 +46,5 @@ class TaskModel:
             connection.execute(
                 f"UPDATE tasks SET status = {new_status} WHERE id = {task_id}"
             )
+        connection.commit()
+        connection.close()

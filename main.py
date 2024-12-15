@@ -1,6 +1,6 @@
 from telebot import TeleBot
 from constants import TOKEN
-from todo.controllers import Controller
+from controllers import Controller
 
 # Создаем экземпляр бота
 bot = TeleBot(TOKEN)
